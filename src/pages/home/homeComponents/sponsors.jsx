@@ -45,6 +45,7 @@ function Sponsors() {
           "
         >
           <Marquee
+            direction="right"
             speed={window.innerWidth < 640 ? 40 : 70}
             pauseOnHover
             gradient={false}
