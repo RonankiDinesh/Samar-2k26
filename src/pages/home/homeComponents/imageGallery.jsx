@@ -159,11 +159,11 @@ function ImageSection() {
 
 	return (
 		<section className="md:p-12 lg:p-16 flex flex-col justify-center items-center">
-			<main className="w-screen backdrop-blur-lg p-16 border-t-2 border-b-2 border-rose-600">
+			<main className="w-screen backdrop-blur-lg p-16 border-t-2 border-b-2 border-[#59268C">
 				<div className="overflow-hidden relative">
 					<h2 className="mb-7 pb-4 text-2xl font-bold text-white capitalize flex justify-center items-center">
 						<div className="relative">
-							<span className="text-amber-500 font-crossFly uppercase text-4xl tracking-widerwider drop-shadow-[3px_3px_0px_#000]">
+							<span className="text-[#8CCCFF] font-crossFly uppercase text-4xl tracking-widerwider drop-shadow-[3px_3px_0px_#000]">
 								Image Gallery
 							</span>
 							<span className="absolute bottom-[-16px] left-0 w-full h-1 bg-gray-100 rounded-xl"></span>
