@@ -1,200 +1,133 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const games = [
-  {
-    id: 1,
-    title: "BasketBall",
-    description: "Dota 2 is a multiplayer online battle arena by Valve.",
-    image: "assets/sports/basketball/basketball_1.jpg",
-  },
-  {
-    id: 2,
-    title: "Cricket",
-    description: "The Witcher 3 is an action RPG game.",
-    image: "assets/sports/cricket/cricket_1.jpg",
-  },
-  {
-    id: 3,
-    title: "Football",
-    description: "RDR 2 is an action-adventure game by Rockstar Games.",
-    image: "assets/sports/football/football_1.jpg",
-  },
-  {
-    id: 4,
-    title: "VolleyBall",
-    description: "PUBG is a battle royale game.",
-    image: "assets/sports/volleyball/volleyball_1.jpg",
-  },
-  {
-    id: 5,
-    title: "HandBall",
-    description: "Fortnite is a battle royale and building game.",
-    image: "assets/sports/handball/handball_1.jpg",
-  },
-  {
-    id: 6,
-    title: "ShortPut",
-    description: "Far Cry 5 is a first-person shooter by Ubisoft.",
-    image: "assets/sports/shortput/shortput_1.jpg",
-  },
-  {
-    id: 7,
-    title: "BasketBall",
-    description: "Dota 2 is a multiplayer online battle arena by Valve.",
-    image: "assets/sports/basketball/basketball_1.jpg",
-  },
-  {
-    id: 8,
-    title: "Cricket",
-    description: "The Witcher 3 is an action RPG game.",
-    image: "assets/sports/cricket/cricket_1.jpg",
-  },
-  {
-    id: 9,
-    title: "Football",
-    description: "RDR 2 is an action-adventure game by Rockstar Games.",
-    image: "assets/sports/football/football_1.jpg",
-  },
-  {
-    id: 10,
-    title: "VolleyBall",
-    description: "PUBG is a battle royale game.",
-    image: "assets/sports/volleyball/volleyball_1.jpg",
-  },
-  {
-    id: 11,
-    title: "HandBall",
-    description: "Fortnite is a battle royale and building game.",
-    image: "assets/sports/handball/handball_1.jpg",
-  },
-  {
-    id: 12,
-    title: "ShortPut",
-    description: "Far Cry 5 is a first-person shooter by Ubisoft.",
-    image: "assets/sports/shortput/shortput_1.jpg",
-  },
-  {
-    id: 13,
-    title: "BasketBall",
-    description: "Dota 2 is a multiplayer online battle arena by Valve.",
-    image: "assets/sports/basketball/basketball_1.jpg",
-  },
-  {
-    id: 14,
-    title: "Cricket",
-    description: "The Witcher 3 is an action RPG game.",
-    image: "assets/sports/cricket/cricket_1.jpg",
-  },
-  {
-    id: 15,
-    title: "Football",
-    description: "RDR 2 is an action-adventure game by Rockstar Games.",
-    image: "assets/sports/football/football_1.jpg",
-  },
-  {
-    id: 16,
-    title: "VolleyBall",
-    description: "PUBG is a battle royale game.",
-    image: "assets/sports/volleyball/volleyball_1.jpg",
-  },
-  {
-    id: 17,
-    title: "HandBall",
-    description: "Fortnite is a battle royale and building game.",
-    image: "assets/sports/handball/handball_1.jpg",
-  },
-  {
-    id: 18,
-    title: "ShortPut",
-    description: "Far Cry 5 is a first-person shooter by Ubisoft.",
-    image: "assets/sports/shortput/shortput_1.jpg",
-  },
+  { id: 1, title: "BasketBall", description: "Fast-paced team sport.", image: "assets/sports/basketball/basketball_1.jpg" },
+  { id: 2, title: "Cricket", description: "A game of skill and strategy.", image: "assets/sports/cricket/cricket_1.jpg" },
+  { id: 3, title: "Football", description: "The beautiful game.", image: "assets/sports/football/football_1.jpg" },
+  { id: 4, title: "VolleyBall", description: "High-energy net sport.", image: "assets/sports/volleyball/volleyball_1.jpg" },
+  { id: 5, title: "HandBall", description: "Fast indoor action.", image: "assets/sports/handball/handball_1.jpg" },
+  { id: 6, title: "ShotPut", description: "Strength & technique.", image: "assets/sports/shortput/shortput_1.jpg" },
+  { id: 7, title: "BasketBall", description: "Fast-paced team sport.", image: "assets/sports/basketball/basketball_1.jpg" },
+  { id: 8, title: "Cricket", description: "A game of skill and strategy.", image: "assets/sports/cricket/cricket_1.jpg" },
+  { id: 9, title: "Football", description: "The beautiful game.", image: "assets/sports/football/football_1.jpg" },
+  { id: 10, title: "VolleyBall", description: "High-energy net sport.", image: "assets/sports/volleyball/volleyball_1.jpg" },
+  { id: 11, title: "HandBall", description: "Fast indoor action.", image: "assets/sports/handball/handball_1.jpg" },
+  { id: 12, title: "ShotPut", description: "Strength & technique.", image: "assets/sports/shortput/shortput_1.jpg" },
 ];
 
 function ImageSection() {
-	const [activeIndex, setActiveIndex] = useState(0);
-	const totalItems = games.length;
-	const isClicked = useRef(false);
-	const timeoutRef = useRef(null);
-	const intervalRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const intervalRef = useRef(null);
 
-	useEffect(() => {
-		if (!isClicked.current) {
-		intervalRef.current = setInterval(() => {
-			handleNext();
-		}, 3000);
-		}
+  /* ---------------- AUTO SLIDE (DESKTOP ONLY) ---------------- */
+  useEffect(() => {
+    if (window.innerWidth < 1024) return;
 
-		return () => {
-		clearInterval(intervalRef.current);
-		};
-	}, []);
+    intervalRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % games.length);
+    }, 3500);
 
-	const handleNext = () => {
-		setActiveIndex((prevIndex) => (prevIndex + 1) % totalItems);
-	};
+    return () => clearInterval(intervalRef.current);
+  }, []);
 
-	const handlePrev = () => {
-		setActiveIndex((prevIndex) =>
-		(prevIndex - 1 + totalItems) % totalItems
-		);
-	};
+  /* ---------------- STOP AUTO SLIDE ON USER SCROLL ---------------- */
+  useEffect(() => {
+    const stopAuto = () => clearInterval(intervalRef.current);
 
-	const handleCardClick = (index) => {
-		if (index !== activeIndex) {
-		clearInterval(intervalRef.current);
-		isClicked.current = true;
+    window.addEventListener("wheel", stopAuto, { passive: true });
+    window.addEventListener("touchstart", stopAuto, { passive: true });
 
-		setActiveIndex(index);
+    return () => {
+      window.removeEventListener("wheel", stopAuto);
+      window.removeEventListener("touchstart", stopAuto);
+    };
+  }, []);
 
-		timeoutRef.current = setTimeout(() => {
-			handleNext();
-			isClicked.current = false;
-			intervalRef.current = setInterval(() => {
-			handleNext();
-			}, 3000);
-		}, 10000);
-		}
-	};
+  const handleCardClick = (index) => {
+    clearInterval(intervalRef.current);
+    setActiveIndex(index);
+  };
 
-	return (
-		<section className="md:p-12 lg:p-16 flex flex-col justify-center items-center">
-			<main className="w-screen backdrop-blur-lg p-16 border-t-2 border-b-2 border-[#59268C">
-				<div className="overflow-hidden relative">
-					<h2 className="mb-7 pb-4 text-2xl font-bold text-white capitalize flex justify-center items-center">
-						<div className="relative">
-							<span className="text-[#8CCCFF] font-crossFly uppercase text-4xl tracking-widerwider drop-shadow-[3px_3px_0px_#000]">
-								Image Gallery
-							</span>
-							<span className="absolute bottom-[-16px] left-0 w-full h-1 bg-gray-100 rounded-xl"></span>
-							<span className="absolute bottom-[-16px] left-0 w-8 h-1 bg-amber-500 rounded-xl"></span>
-						</div>
-					</h2>
+  return (
+    <section className="py-14 sm:py-20 flex justify-center">
+      <main className="w-full max-w-[1600px] px-4 sm:px-10">
 
-					<div className="p-5">
-						<div className="flex transition-transform duration-1000 ease-in-out" style={{ transform: `translateX(-${activeIndex * 340}px)` }} >
-							{games.map((game, index) => (
-								<div key={game.id} onClick={() => handleCardClick(index)} className={`relative flex-shrink-0 ml-5 cursor-pointer border-2 border-rose-500 rounded-xl overflow-hidden transition-all duration-500 ease-in-out group ${ index === activeIndex ? "w-[550px]" : "w-[320px]" } h-[400px]`}  style={{ backgroundImage: `url(${game.image})`, backgroundSize: "cover", backgroundPosition: "center", }} >
-									<div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-90"></div>
+        {/* TITLE */}
+        <div className="text-center mb-10">
+          <h2 className="font-crossFly uppercase text-3xl sm:text-4xl text-[#8CCCFF] drop-shadow-[3px_3px_0px_#000]">
+            Image Gallery
+          </h2>
+          <div className="relative mt-3 flex justify-center">
+            <span className="w-32 h-1 bg-gray-100 rounded-xl"></span>
+            <span className="absolute w-8 h-1 bg-amber-500 rounded-xl"></span>
+          </div>
+        </div>
 
-									<div className="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all ease-in-out"></div>
-									<div className={`absolute bottom-0 left-0 right-0 p-6 text-white transition-transform duration-500 ease-in-out ${ index === activeIndex ? "translate-y-0" : "translate-y-[calc(100%-80px)]" }`} >
-										<h3 className="text-xl font-bold mb-2 uppercase font-crossFly italic">
-											{game.title}
-										</h3>
+        {/* SLIDER */}
+        <div
+          className="
+            flex gap-5 overflow-x-auto scrollbar-hide
+            snap-x snap-proximity
+            pb-4
+          "
+        >
+          {games.map((game, index) => (
+            <div
+              key={game.id}
+              onClick={() => handleCardClick(index)}
+              className={`
+                snap-center flex-shrink-0 cursor-pointer
+                relative rounded-xl overflow-hidden
+                border-2 border-rose-500
+                transition-all duration-500
+                h-[260px] sm:h-[320px] lg:h-[400px]
+                ${
+                  index === activeIndex
+                    ? "w-[280px] sm:w-[360px] lg:w-[520px]"
+                    : "w-[220px] sm:w-[300px] lg:w-[320px]"
+                }
+              `}
+              style={{
+                backgroundImage: `url(${game.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              {/* OVERLAY */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/90" />
 
-										<p className={`text-gray-300 transition-opacity duration-500 font-brave81 lowercase tracking-wider ${ index === activeIndex ? "opacity-100" : "opacity-0" }`} >
-											{game.description}
-										</p>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-			</main>
-		</section>
-	);
+              {/* CONTENT */}
+              <div
+                className={`
+                  absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white
+                  transition-all duration-500
+                  ${
+                    index === activeIndex
+                      ? "translate-y-0"
+                      : "translate-y-[65%]"
+                  }
+                `}
+              >
+                <h3 className="font-crossFly italic uppercase text-lg sm:text-xl">
+                  {game.title}
+                </h3>
+
+                <p
+                  className={`
+                    mt-2 text-sm sm:text-base text-gray-300 tracking-wide
+                    transition-opacity duration-500
+                    ${index === activeIndex ? "opacity-100" : "opacity-0"}
+                  `}
+                >
+                  {game.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
+    </section>
+  );
 }
 
 export default ImageSection;

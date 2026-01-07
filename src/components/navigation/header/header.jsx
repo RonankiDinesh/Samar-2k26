@@ -45,7 +45,7 @@ function Header() {
                     to="/"
                     className={({ isActive }) =>
                         `px-8 py-3 hover:text-rose-400 font-crossFly text-xs tracking-widest ${
-                            isActive ? 'text-rose-400' : 'text-white'
+                            isActive ? 'text-[#8CCCFF]' : 'text-white'
                         }`
                     }
                     onMouseEnter={handleHover}
@@ -57,7 +57,7 @@ function Header() {
                     to="/about"
                     className={({ isActive }) =>
                         `px-8 py-3 hover:text-rose-400 font-crossFly text-xs tracking-widest ${
-                            isActive ? 'text-rose-400' : 'text-white'
+                            isActive ? 'text-[#8CCCFF]' : 'text-white'
                         }`
                     }
                     onMouseEnter={handleHover}
@@ -69,7 +69,7 @@ function Header() {
                     to="/merchandise"
                     className={({ isActive }) =>
                         `px-8 py-3 hover:text-rose-400 font-crossFly text-xs tracking-widest ${
-                            isActive ? 'text-rose-400' : 'text-white'
+                            isActive ? 'text-[#8CCCFF]' : 'text-white'
                         }`
                     }
                     onMouseEnter={handleHover}
@@ -80,7 +80,7 @@ function Header() {
                     to="/team"
                     className={({ isActive }) =>
                         `px-8 py-3 hover:text-rose-400 font-crossFly text-xs tracking-widest ${
-                            isActive ? 'text-rose-400' : 'text-white'
+                            isActive ? 'text-[#8CCCFF]' : 'text-white'
                         }`
                     }
                     onMouseEnter={handleHover}
@@ -92,7 +92,7 @@ function Header() {
                     to="/contact"
                     className={({ isActive }) =>
                         `px-8 py-3 hover:text-rose-400 font-crossFly text-xs tracking-widest ${
-                            isActive ? 'text-rose-400' : 'text-white'
+                            isActive ? 'text-[#8CCCFF]' : 'text-white'
                         }`
                     }
                     onMouseEnter={handleHover}
